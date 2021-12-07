@@ -22,7 +22,7 @@ const InicioProtegido = () => {
     setRespuesta('');
 
     axios
-      .get('http://localhost:5000/api/test-route')
+      .get('https://proyectociclo4backend.herokuapp.com/api/test-route')
       .then((response) => {
         setRespuesta(response.data);
       })

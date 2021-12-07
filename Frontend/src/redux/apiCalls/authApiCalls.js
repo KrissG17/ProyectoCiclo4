@@ -23,7 +23,7 @@ export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
     const res = await axios.post(
-      'http://localhost:5000/auth/iniciar-sesion',
+      'https://proyectociclo4backend.herokuapp.com/auth/iniciar-sesion',
       user
     );
     console.log(res);
@@ -37,7 +37,10 @@ export const register = async (dispatch, user) => {
   dispatch(registerStart());
   console.log('dispatching register');
   try {
-    const res = await axios.post('http://localhost:5000/auth/registro', user);
+    const res = await axios.post(
+      'https://proyectociclo4backend.herokuapp.com/auth/registro',
+      user
+    );
     console.log(res);
     dispatch(registerSuccess(res.data));
   } catch (error) {
@@ -50,7 +53,10 @@ export const registerLib = async (dispatch, libro) => {
   dispatch(registerStart());
   console.log('dispatching register');
   try {
-    const res = await axios.post('http://localhost:5000/auth/registro', libro);
+    const res = await axios.post(
+      'https://proyectociclo4backend.herokuapp.com/auth/registro',
+      libro
+    );
     console.log(res);
     dispatch(registerSuccess(res.data));
   } catch (error) {
@@ -63,7 +69,9 @@ export const registerLib = async (dispatch, libro) => {
 export const logout = async (dispatch) => {
   dispatch(logoutStart());
   try {
-    const res = await axios.post('http://localhost:5000/auth/cerrar-sesion');
+    const res = await axios.post(
+      'https://proyectociclo4backend.herokuapp.com/auth/cerrar-sesion'
+    );
     dispatch(logoutSuccess(res.data));
   } catch (error) {
     console.log(error);
@@ -74,7 +82,9 @@ export const logout = async (dispatch) => {
 export const checkUser = async (dispatch) => {
   dispatch(checkUserStart());
   try {
-    const res = await axios.get('http://localhost:5000/auth/revisar-usuario');
+    const res = await axios.get(
+      'https://proyectociclo4backend.herokuapp.com/revisar-usuario'
+    );
     console.log(res.data.user);
     dispatch(checkUserSuccess(res.data.user));
   } catch (error) {
@@ -85,7 +95,9 @@ export const checkUser = async (dispatch) => {
 export const checkLibro = async (dispatch) => {
   dispatch(checkLibroStart());
   try {
-    const res = await axios.get('http://localhost:5000/auth/revisar-libro');
+    const res = await axios.get(
+      'https://proyectociclo4backend.herokuapp.com/auth/revisar-libro'
+    );
     console.log(res.data.libro);
     dispatch(checkLibroSuccess(res.data.libro));
   } catch (error) {

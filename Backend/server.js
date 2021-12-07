@@ -1,15 +1,15 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const morgan = require('morgan');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
-const apiRoutes = require('./routes/apiRoutes');
-const { requireAuth } = require('./middleware/authMiddleware');
+let express = require('express');
+let mongoose = require('mongoose');
+let morgan = require('morgan');
+let cookieParser = require('cookie-parser');
+let cors = require('cors');
+let authRoutes = require('./routes/authRoutes');
+let apiRoutes = require('./routes/apiRoutes');
+let { requireAuth } = require('./middleware/authMiddleware');
 
 require('dotenv').config();
 var corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://proyectociclo4frontend.herokuapp.com/',
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true,
 };
@@ -29,12 +29,12 @@ mongoose
   )
   .then(() => {
     console.log('Conected to Mongo at: ' + process.env.DB_HOST);
-    app.listen(process.env.PORT || 5000);
+    app.listen(process.env.PORT || 8080);
     console.log('Listening on PORT: ' + process.env.PORT);
   })
   .catch((err) => console.log(err));
 
-app.use(morgan('dev'));
+app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

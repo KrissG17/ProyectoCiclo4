@@ -1,7 +1,7 @@
-const { Router } = require('express');
-const authController = require('../controllers/authController');
+let { Router } = require('express');
+let authController = require('../controllers/authController');
 
-const router = Router();
+let router = Router();
 
 router.post('/registro', authController.postRegistrar);
 router.post('/iniciar-sesion', authController.postIniciarSesion);
